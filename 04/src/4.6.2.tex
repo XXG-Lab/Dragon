@@ -1,0 +1,92 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usepackage{lscape}
+\usetikzlibrary{automata, positioning}
+\begin{document}
+\begin{landscape}
+\begin{tikzpicture}[shorten >= 1pt, node distance = 5.5cm, on grid, auto]
+  \node[state, rectangle] (0) {
+    \begin{tabular}{c} $I_0$ \\
+      $\begin{array}{lcl} 
+        G \rightarrow .~S \\
+        \hline
+        S \rightarrow .~a~S^{\prime\prime} \\
+      \end{array}$
+    \end{tabular}};
+  \node[state, rectangle] [right=of 0] (1) {
+    \begin{tabular}{c} $I_1$ \\ 
+      $\begin{array}{lcl} 
+        G \rightarrow S~. \\
+      \end{array}$
+    \end{tabular}};
+  \node[state, rectangle] [below=of 0] (2) {
+    \begin{tabular}{c} $I_2$ \\ 
+      $\begin{array}{lcl} 
+        S \rightarrow a~.~S^{\prime\prime} \\
+        \hline
+        S^{\prime\prime} \rightarrow .~S~S'~S^{\prime\prime} \\
+        S^{\prime\prime} \rightarrow . \\
+        S \rightarrow .~a~S^{\prime\prime} \\
+      \end{array}$
+    \end{tabular}};
+  \node[state, rectangle] [above right=of 2] (3) {
+    \begin{tabular}{c} $I_3$ \\ 
+      $\begin{array}{lcl} 
+        S \rightarrow a~S^{\prime\prime}~. \\
+      \end{array}$
+    \end{tabular}};
+  \node[state, rectangle] [right=of 2] (4) {
+    \begin{tabular}{c} $I_4$ \\ 
+      $\begin{array}{lcl} 
+        S^{\prime\prime} \rightarrow S~.~S'~S^{\prime\prime} \\
+        \hline
+        S' \rightarrow .~+ \\
+        S' \rightarrow .~* \\
+      \end{array}$
+    \end{tabular}};
+  \node[state, rectangle] [above right=of 4] (5) {
+    \begin{tabular}{c} $I_5$ \\ 
+      $\begin{array}{lcl} 
+        S^{\prime\prime} \rightarrow S~S'~.~S^{\prime\prime} \\
+        \hline
+        S^{\prime\prime} \rightarrow .~S~S'~S^{\prime\prime} \\
+        S^{\prime\prime} \rightarrow . \\
+        S \rightarrow .~a~S^{\prime\prime} \\
+      \end{array}$
+    \end{tabular}};
+  \node[state, rectangle] [below=of 5] (6) {
+    \begin{tabular}{c} $I_6$ \\ 
+      $\begin{array}{lcl} 
+        S' \rightarrow +~. \\
+      \end{array}$
+    \end{tabular}};
+  \node[state, rectangle] [below=of 4] (7) {
+    \begin{tabular}{c} $I_7$ \\ 
+      $\begin{array}{lcl} 
+        S' \rightarrow *~. \\
+      \end{array}$
+    \end{tabular}};
+  \node[state, rectangle] [right=of 5] (8) {
+    \begin{tabular}{c} $I_8$ \\ 
+      $\begin{array}{lcl} 
+        S^{\prime\prime} \rightarrow S~S'~S^{\prime\prime}~. \\
+      \end{array}$
+    \end{tabular}};
+  \node[] (100) [right=of 1] {accept};
+  \path[->]
+    (0) edge node {S} (1)
+        edge node {a} (2)
+    (2) edge node {$S^{\prime\prime}$} (3)
+        edge [loop left] node {a} (2)
+        edge node {S} (4)
+    (4) edge node {$S'$} (5)
+        edge node {+} (6)
+        edge node {*} (7)
+    (5) edge node {a} (2)
+        edge node {$S^{\prime\prime}$} (8)
+        edge [bend left] node {S} (4)
+    (1) edge node {\$} (100);
+\end{tikzpicture}
+\end{landscape}
+\end{document}

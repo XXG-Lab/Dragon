@@ -1,0 +1,40 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\begin{document}
+\begin{tikzpicture}[shorten >= 1pt, node distance = 2.5cm, on grid, auto]
+  \node[state, initial] (0) {0};
+  \node[state] (1) [right=of 0] {1};
+  \node[state] (2) [above right=of 1] {2};
+  \node[state] (3) [below right=of 1] {3};
+  \node[state] (4) [right=of 2] {4};
+  \node[state] (5) [right=of 3] {5};
+  \node[state] (6) [below right=of 4] {6};
+  \node[state, accepting] (7) [right=of 6] {7};
+  \path[->]
+    (0) edge node {$\epsilon$} (1)
+        edge [bend right=50] node {$\epsilon$} (7)
+    (1) edge node {$\epsilon$} (2)
+        edge node {$\epsilon$} (3)
+    (2) edge node {a} (4)
+    (3) edge node {b} (5)
+    (4) edge node {$\epsilon$} (6)
+    (5) edge node {$\epsilon$} (6)
+    (6) edge node {$\epsilon$} (7)
+        edge [bend right=80, looseness=1.5] node {$\epsilon$} (1);
+\end{tikzpicture}
+
+\begin{tikzpicture}[shorten >= 1pt, node distance = 2.5cm, on grid, auto]
+  \node[state, initial, accepting] (A) {A};
+  \node[state, accepting] (B) [above right=of A] {B};
+  \node[state, accepting] (C) [below right=of A] {C};
+  \path[->]
+    (A) edge node {a} (B)
+        edge node {b} (C)
+    (B) edge node [left] {b} (C)
+        edge [loop above] node {a} (B)
+    (C) edge [bend right] node {a} (B)
+        edge [loop below] node {b} (C);
+\end{tikzpicture}
+\end{document}

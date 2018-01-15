@@ -1,0 +1,21 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\begin{document}
+\begin{tikzpicture}[shorten >= 1pt, node distance = 2.5cm, on grid, auto]
+  \node[state, initial] (A) {A};
+  \node[state] (B) [right=of A] {B};
+  \node[state] (C) [right=of B] {C};
+  \node[state, accepting] (D) [right=of C] {D};
+  \path[->]
+    (A) edge node {a} (B)
+        edge [loop above] node {b} (A)
+    (B) edge node {a} (C)
+        edge [loop above] node {b} (B)
+    (C) edge node {b} (D)
+        edge [loop above] node {a} (C)
+    (D) edge [bend left] node {a} (C)
+        edge [loop above] node {b} (D);
+\end{tikzpicture}
+\end{document}

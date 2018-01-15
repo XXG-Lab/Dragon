@@ -1,0 +1,25 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\begin{document}
+\begin{tikzpicture}[shorten >= 1pt, node distance = 2cm, on grid, auto]
+  \node[state] (6) {+}
+  \node[state] (5) [below right=of 6] {+};
+  \node[state] (4) [below right=of 5] {+};
+  \node[state] (3) [below left=of 4] {+};
+  \node[state] (2) [below left=of 3] {+};
+  \node[state] (1) [below=of 2] {a};
+  \path[->]
+    (6) edge node {} (2)
+        edge node {} (5)
+    (5) edge node {} (3)
+        edge node {} (4)
+    (4) edge node {} (3)
+        edge node {} (1)
+    (3) edge node {} (2)
+        edge node {} (1)
+    (2) edge [bend right] node {} (1)
+        edge [bend left] node {} (1);
+\end{tikzpicture}
+\end{document}

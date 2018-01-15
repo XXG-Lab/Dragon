@@ -1,0 +1,18 @@
+\documentclass{article}
+
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\begin{document}
+\begin{tikzpicture}[shorten >= 1pt, node distance = 2cm, on grid, auto]
+  \node[state, initial, accepting] (0) {0};
+  \node[state, accepting] (1) [right=of 0] {1};
+  \node[state, accepting] (2) [right=of 1] {2};
+  \path[->]
+    (0) edge node {a} (1)
+        edge [bend left] node {b} (2)
+    (1) edge [loop below] node {a} (1)
+        edge node {b} (2)
+    (2) edge [bend left] node {a} (1)
+        edge [loop right] node {b} (2);
+\end{tikzpicture}
+\end{document}

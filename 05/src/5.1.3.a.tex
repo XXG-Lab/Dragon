@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\usepackage{incgraph}
+\usepackage{amsmath}
+\usepackage{qtree}
+\begin{document}
+
+\begin{inctext}
+\Tree[.$L.val=77$ 
+  [.$E.val=77$ 
+    [.$T.val=77$ 
+      [.$F.val=7$ 
+        [.$($ ]
+        [.$E.val=7$ 
+          [.$T.val=3$ 
+            [.$F.val=3$ 
+              [.$\mathbf{digit}.lexval=3$ ]
+            ]
+            [.$T'.inh=3~T'.syn=3$ ]
+          ]
+          [.$E'.inh=3~E'.syn=7$ 
+            [.$+$ ]
+            [.$T.val=4$ 
+              [.$F.val=4$ 
+                [.$\mathbf{digit}.lexval=4$ ]
+              ]
+              [.$T'.inh=4~T'.syn=4$ ]
+            ]
+            [.$E'.inh=7~E'.syn=7$ ]
+          ]
+        ]
+        [.$)$ ]
+      ]
+      [.$T'.inh=7~T'.syn=77$ 
+        [.$*$ ]
+        [.$F.val=11$ 
+          [.$($ ]
+          [.$E.val=11$ 
+            [.$T.val=5$ 
+              [.$F.val=5$ 
+                [.$\mathbf{digit}.lexval=5$ ]
+              ]
+              [.$T'.inh=5~T'.syn=5$ ]
+            ]
+            [.$E'.inh=5~E'.syn=11$ 
+              [.$+$ ]
+              [.$T.val=6$ 
+                [.$F.val=6$ 
+                  [.$\mathbf{digit}.lexval=6$ ]
+                ]
+                [.$T'.inh=6~T'.syn=6$ ]
+              ]
+              [.$E'.inh=11~E'.syn=11$ ]
+            ]
+          ]
+          [.$)$ ]
+        ]
+        [.$T'.inh=77~T'.syn=77$ ]
+      ]
+    ]
+    [.$E'.inh=77~E'.syn=77$ ]
+  ]
+  [.$\mathbf{n}$ ]
+]
+\end{inctext}
+
+\end{document}

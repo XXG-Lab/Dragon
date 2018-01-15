@@ -1,0 +1,60 @@
+\documentclass{article}
+
+\usepackage{incgraph}
+\usepackage{amsmath}
+\usepackage{qtree}
+\begin{document}
+
+\begin{inctext}
+\Tree[.$L.val=54$ 
+  [.$E.val=54$ 
+    [.$T.val=54$ 
+      [.$F.val=1$ 
+        [.$\mathbf{digit}.lexval=1$ ]
+      ]
+      [.$T'.inh=1~T'.syn=54$ 
+        [.$*$ ]
+        [.$F.val=2$ 
+          [.$\mathbf{digit}.lexval=2$ ]
+        ]
+        [.$T'.inh=2~T'.syn=54$ 
+          [.$*$ ]
+          [.$F.val=3$ 
+            [.$\mathbf{digit}.lexval=3$ ]
+          ]
+          [.$T'.inh=6~T'.syn=54$ 
+            [.$*$ ]
+            [.$F.val=9$ 
+              [.$($ ]
+              [.$E.val=9$ 
+                [.$T.val=4$ 
+                  [.$F.val=4$ 
+                    [.$\mathbf{digit}.lexval=4$ ]
+                  ]
+                  [.$T'.inh=4~T'.syn=4$ ]
+                ]
+                [.$E'.inh=4~E'.syn=9$ 
+                  [.$+$ ]
+                  [.$T.val=5$ 
+                    [.$F.val=5$ 
+                      [.$\mathbf{digit}.lexval=5$ ]
+                    ]
+                    [.$T'.inh=5~T'.syn=5$ ]
+                  ]
+                  [.$E'.inh=9~E'.syn=9$ ]
+                ]
+              ]
+              [.$)$ ]
+            ]
+            [.$T'.inh=54~T'.syn=54$ ]
+          ]
+        ]
+      ]
+    ]
+    [.$E'.inh=54~E'.syn=54$ ]
+  ]
+  [.$\mathbf{n}$ ]
+]
+\end{inctext}
+
+\end{document}
